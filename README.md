@@ -1,275 +1,116 @@
-# Data-fundamentals-Final-project
-# Data-fundamentals-Final-project
-<!-- TABLE OF CONTENTS -->
-# 📗 Table of Contents
+# Clinic Database System <a name="about-project"></a>
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
------
+> A secure and scalable medical database system built with Supabase that manages patient records, doctor information, appointments, and treatments with robust role-based security.
 
-#  Event Ticketing System <a name="about-project"></a>
-This project demonstrates how to **secure a database using Admin Roles, Row Level Security (RLS), and Supabase Auth**.  
-It builds upon the **Event Ticketing System** created in the **Data Tools Final Project** — extending it with real security features.
-
-The system manages **users, events, tickets, and payments**, allowing users to buy tickets while admins manage events and oversee all data.  
-This project focuses on **data access control**, **user roles**, and **safe database management**.
+**Clinic Database System** is a comprehensive healthcare management solution that provides secure data storage and access control for medical facilities. It ensures patient privacy through Row Level Security while giving healthcare providers efficient tools to manage medical records.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Backend as service</summary>
+  <summary>Backend</summary>
   <ul>
- <li><a href="https://supabase.com/">Supabase</a></li>
+    <li><a href="https://supabase.com/">Supabase</a></li>
   </ul>
 </details>
 
 <details>
 <summary>Database</summary>
-<ul>
-<li><a href="https://www.postgresql.org/">PostgreSQL 15+</a></li>
-<ul>
+  <ul>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+  </ul>
 </details>
 
 <details>
 <summary>Security</summary>
-<ul>
-<li>Row Level Security (RLS)</li>
-<li>Role-Based Access Control (RBAC)</li>
-<li>Supabase Auth</li>
-</ul>
+  <ul>
+    <li>Row Level Security (RLS)</li>
+    <li>Supabase Authentication</li>
+  </ul>
 </details>
 
+<!-- Features -->
 
 ### Key Features <a name="key-features"></a>
-- **🔐 Row Level Security (RLS) – Ensures users can only access their own tickets, events, or payments.**
-- **👥 Role-Based Access Control (RBAC) – Defines clear roles: Admin (full access) and User (limited access).**
-- **🛡️ Admin Functions – Includes secure PostgreSQL functions for admin-only actions like deleting or managing events.**
-- **🎟️ Organized Database Design – Features well-structured tables for users, events, tickets, and payments.**
-- **🔒 Least Privilege Principle – Applies strict permissions so each role only has access to what it needs.**
+
+- **[Secure Patient Data Management]** - Implements healthcare privacy standards with Row Level Security
+- **[Role-Based Access Control]** - Patients can view their records while doctors have full medical access
+- **[Comprehensive Medical Tracking]** - Manages appointments, treatments, and patient-doctor relationships
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-To get a local copy up and running, follow these steps:
-
-### 🪜 Step 1: Set Up Supabase
-
-1. Go to [Supabase Dashboard](https://app.supabase.com/)
-2. Create a **new project**
-3. Open the **SQL Editor**
-4. Copy and paste your schema from `schema.sql` (from your Event Ticketing System)
-5. Run the SQL to create all tables (`users`, `events`, `tickets`, `payments`)
-
----
-
+To set up your own clinic database system, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
-- A [Supabase](https://supabase.com/) account (free tier available works perfectly)
-- Basic understanding of SQL and PostgreSQL
-- A SQL client or the Supabase SQL Editor
-
+- A Supabase account ([sign up here](https://supabase.com/))
+- Basic knowledge of SQL and database concepts
 
 ### Setup
 
-Clone this repository to your desired folder:
+1. **Create a Supabase Project**
+   - Go to [Supabase Dashboard](https://app.supabase.com/)
+   - Create a new project and wait for initialization
 
-```sh
-  cd my-folder
-  git clone https://github.com/rozzienicole8/data-fundamentals-final-project
-```
---->
+2. **Execute the Database Schema**
+   - Navigate to the SQL Editor in your Supabase project
+   - Copy and paste the entire schema from `schema.sql`
+   - Run the SQL commands to create tables and security policies
 
 ### Install
 
-Install this project with:
+1. **Verify Table Creation**
+   - Check the Table Editor to ensure these tables exist:
+     - Patients
+     - Doctors  
+     - Appointments
+     - Treatments
 
-1. Execute the Database Schema
-
-- Open your Supabase project
-
-- Navigate to the SQL Editor
-
-- Copy and paste the entire contents of your schema.sql file
-
-- Run the SQL commands to create the tables
-
-2. Verify Table Creation
-
-- Go to the Table Editor in Supabase
-
-- Confirm you see the following tables:
-
-   -  users
-
-   - events
-
-   -  tickets
-
-   - payments
-
-- Ensure each table contains at least 5 rows of sample data
-
-3. Enable Authentication
-
-- Navigate to Authentication → Providers in Supabase
-
-- Enable Email/Password or Magic Link authentication
-
-- (Optional) Customize your email templates for sign-in and sign-up messages
-  
---->
+2. **Configure Authentication**
+   - Go to Authentication → Settings
+   - Enable Email/Password authentication
+   - Set up your authorized redirect URLs
 
 ### Usage
-### 👤 For Regular Users:
 
-- Sign up through Supabase Auth (Email or Magic Link)
-- A new record is automatically created in the users table with role = 'user'
-You can:
-- Browse and view available events
-- Purchase tickets for events
-- View your own tickets and payment history
-- You cannot view or edit other users’ data (protected by Row Level Security (RLS)
+**For Patients:**
+- Sign up through your application using Supabase Auth
+- View personal medical appointments and treatment history
+- Access is read-only and restricted to own records
 
-###  🛡️For Administrators:
-- Admins are users with role = 'admin' in the users table
-They can:
-- Manage all users, events, tickets, and payments
-- Add new events or update event details
-- Monitor all transactions
-- Run admin-only functions such as:
+**For Doctors:**
+- Access all patient records and medical data
+- Create and manage appointments
+- Update treatment records and medical information
+
+### Run tests
+
+Use the test queries included in the schema to verify security:
+
 ```sql
--- Delete any event
-SELECT delete_event('event-id-here');
+-- Test patient access (should see only their data)
+SET ROLE authenticated;
+SET "request.jwt.claim.sub" TO 'patient-auth-uuid';
+SELECT * FROM Appointments;
 
--- Get event attendance summary
-SELECT * FROM get_event_statistics();
-
--- Archive past events
-SELECT * FROM archive_old_events();
+-- Test doctor access (should see all data)  
+SET "request.jwt.claim.sub" TO 'doctor-auth-uuid';
+SELECT * FROM Appointments;
 ```
---->
-  
-### 🧱 Database Structure
-### 🧍‍♂️ Users Table
 
-|Column|Type|Description|
-|-----|-----|-----------|
-|id	|UUID|	Primary key|
-|email|TEXT	|User email (unique)|
-|full_name|	TEXT|	User’s full name|
-|role|	TEXT	|'admin' or 'user'|
-|created_at|	TIMESTAMP|	Record creation timestamp
-###  🎟️ Events Table
-|Column|	Type|	Description|
-|------|------|------------|
-|id	|UUID	|Primary key|
-|organizer_id|UUID|Foreign key referencing users|
-|event_name|TEXT|Name of the event|
-|description|TEXT|Event details|
-|location	|TEXT|Event location|
-|event_date|DATE|Date of the event|
-|event_time|TIME|Time of the event|
-|created_at|TIMESTAMP|Record creation timestamp|
-###  🎫 Tickets Table
-|Column	|Type	|Description|
-|-------|-----|-----------|
-|id|UUID|Primary key|
-|event_id|UUID|Foreign key referencing events|
-|user_id|	UUID|Foreign key referencing users|
-|status	|TEXT|'active', 'cancelled', or 'used'|
-|purchase_date|	TIMESTAMP	|When the ticket was purchased|
-### 💳 Payments Table
-|Column	|Type|	Description|
-|-------|----|-------------|
-|id|UUID|Primary key|
-|ticket_id|UUID|Foreign key referencing tickets|
-|amount|DECIMAL|Payment amount|
-|payment_status|TEXT|	'paid', 'pending', or 'failed'|
-|created_at|TIMESTAMP|	Payment timestamp|
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Deployment
 
- ###  🔐 Security Implementation <a name="security"></a>
+This project is deployed on Supabase. To deploy your own instance:
 
-This project uses Row Level Security (RLS) and Role-Based Access Control (RBAC) to ensure safe, restricted data access.
-
-## 👥 User Roles
-
-Admin: Full access to all tables and admin-only functions
-
-User: Can only access their own data (tickets, payments, and profile)
-
-### 🧩 Row Level Security Policies
-### Users Table Policies
-
-✅ Users can view and update their own profiles (except role)
-
-✅ Admins can view and manage all users
-
-### Events Table Policies
-
-✅ Organizers (users) can view and manage their own events
-
-✅ Admins have full access to all events
-
-### Tickets Table Policies
-
-✅ Users can view, purchase, and cancel their own tickets
-
-✅ Admins can view and manage all tickets
-
-### Payments Table Policies
-
-✅ Users can view their own payment history
-
-✅ Admins can view and manage all payments
-
-### ⚙️ Admin-Only Functions
-
-1. delete_event(event_id UUID)
-
-- Deletes any event regardless of ownership
-
-- Uses SECURITY DEFINER for elevated privileges
-
-2. get_event_statistics()
-
-- Returns event attendance and ticket sales summaries
-
-- Useful for admin dashboards
-
-3. archive_old_events()
-
-- Archives past events older than a specific date
-
-- Returns the count of archived events
-
- 📄 For more details, see `security_notes.md` 
+1. Create a new Supabase project
+2. Execute the provided schema.sql
+3. Configure authentication settings
+4. Connect your frontend application to the Supabase API
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -277,13 +118,9 @@ User: Can only access their own data (tickets, payments, and profile)
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+👤 **James Mwai**
 
-👤 **Author1**
-
-- GitHub: [@[nicolerozzie9@gmail.com](https://github.com/nicolerozzie9)
-- LinkedIn:[@[LinkedIn](https://linkedin.com/in/RozzieNicole) 
-
+- GitHub: [@jameskins_svg](https://github.com/jameskins_svg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -291,12 +128,10 @@ User: Can only access their own data (tickets, payments, and profile)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-
- - [ ] Add audit logs for admin actions
- - [ ] Add email notifications when users buy tickets
- - [ ] Create admin dashboard with statistics
- - [ ] Add Two-Factor Authentication (2FA) for admins
+- [ ] **Medical Billing Integration** - Connect with payment processing systems
+- [ ] **Prescription Management** - Digital prescription tracking and renewal
+- [ ] **Lab Results Portal** - Integration with laboratory systems for test results
+- [ ] **Telemedicine Features** - Virtual consultations and remote patient monitoring
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -304,16 +139,15 @@ User: Can only access their own data (tickets, payments, and profile)
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
+
 ## ⭐️ Show your support <a name="support"></a>
 
-> If this project helped you understand Supabase security, give it a ⭐ on GitHub!
+If you find this clinic database system useful for your healthcare application, please give it a star! Your support helps improve medical data management for everyone.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -321,29 +155,23 @@ Feel free to check the [issues page](../../issues/).
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-- Supabase — for the easy PostgreSQL + Auth platform
-
-- PostgreSQL community — for robust database security features
-
-- Data Fundamentals Course — for inspiring this project
+I would like to thank the Supabase team for providing an excellent platform that makes secure database management accessible for healthcare applications.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FAQ (optional) -->
 
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
+## ❓ FAQ <a name="faq"></a>
 
+- **How do patients access their medical records?**
+  - Patients sign up through your application, which connects to Supabase Auth. The RLS policies automatically filter data to show only their records.
 
-- **Q: Why can’t I see other users’ tickets?**
+- **Can doctors from different specialties access all patient data?**
+  - Yes, the current security model allows all doctors full access to ensure comprehensive patient care, but this can be customized for specific privacy requirements.
 
-  - A: Because RLS restricts access — only admins can view all data.
-    
-- **Q: How do I make a user an admin?**
-  
-  - A:
-    ```SQL
-    UPDATE users SET role = 'admin' WHERE email = 'admin@example.com';
-    ```
+- **How do I add new patients to the system?**
+  - When a patient registers through your application, create a record in the Patients table with their Supabase auth UID to link their authentication with their medical data.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
@@ -351,3 +179,5 @@ Feel free to check the [issues page](../../issues/).
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
